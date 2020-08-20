@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProyectosTable extends Migration
+class CreateUserRolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,19 @@ class CreateProyectosTable extends Migration
      */
     public function up()
     {
-        Schema::create('proyectos', function (Blueprint $table) {
+        Schema::create('user_rols', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
             $table->integer('user_id')->unsigned();
+            $table->integer('proyecto_id')->unsigned();
+            $table->integer('rol_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')->on('users')
+                ->onDelete('cascade');
+            $table->foreign('proyecto_id')
+                ->references('id')->on('proyectos')
+                ->onDelete('cascade');
+            $table->foreign('rol_id')
+                ->references('id')->on('rols')
                 ->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +38,6 @@ class CreateProyectosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proyectos');
+        Schema::dropIfExists('user_rols');
     }
 }
