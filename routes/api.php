@@ -26,5 +26,9 @@ Route::group([
     Route::post('refresh', 'JWTAuthController@refresh');
     Route::get('profile', 'JWTAuthController@profile');
     Route::post('registerproyecto', 'ProyectoController@register');
+    Route::post('registerrol', 'RolController@register');
+    Route::post('registerbacklog', 'BackLogController@register');
+    Route::post('registersprint', 'SprintController@register');
+    Route::post('registersprintbacklog', 'SprintBackLogController@register');
 
 });
