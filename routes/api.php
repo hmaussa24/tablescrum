@@ -25,5 +25,6 @@ Route::group([
     Route::post('logout', 'JWTAuthController@logout');
     Route::post('refresh', 'JWTAuthController@refresh');
     Route::get('profile', 'JWTAuthController@profile');
+    Route::post('registerproyecto', 'ProyectoController@register');
 
 });
