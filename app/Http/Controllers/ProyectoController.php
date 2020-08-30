@@ -27,6 +27,7 @@ class ProyectoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|between:2,100',
+            'description' => 'required|between:2,100',
             'user_id' => 'required',
         ]);
 
@@ -37,6 +38,20 @@ class ProyectoController extends Controller
             'message' => 'Successfully registered',
             'user' => $user
         ], 201);
+    }
+
+
+    public function getProyectosUser(Request $request)
+    {
+        # code...
+        //var_dump($request);
+        $proyectos = Proyecto::where('user_id', $request->user_id)->get();
+        //return $proyectos;
+        return response()->json([
+            'message' =>  'proyectos user',
+            'proyectos' => $proyectos,
+        ], 201);
+
     }
 
 }

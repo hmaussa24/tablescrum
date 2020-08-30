@@ -8,6 +8,6 @@ class Proyecto extends Model
 {
     //
     protected $fillable = [
-        'name', 'user_id'
+        'name', 'user_id', 'description'
     ];
 }
